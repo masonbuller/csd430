@@ -1,4 +1,5 @@
-<%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*, csd430.buller_08.CatsBean.*" %>
+<%@ page import="csd430.buller_08.CatsBean" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -26,33 +27,21 @@
 </head>
 <body>
     <%
-        Connection con = null;
-        Statement stmt = null;
         ResultSet rs = null;
         if (request.getMethod().equals("POST")) {
+    %>
+    <jsp:useBean id="cats" class="csd430.buller_08.Cats" scope="session">
+        <jsp:setProperty name="cats" property="*"/>
+    </jsp:useBean>
+    <%
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                String url = "jdbc:mysql://localhost:3306/cats";
-
-                con = DriverManager.getConnection(url,"root","pass");
-                stmt = con.createStatement();
-
-                stmt = con.createStatement();
-            } catch (SQLException e) {
-                System.out.println("Connection failed");
-            }
-
-            try {
-                String name = request.getParameter("name");
-                String color = request.getParameter("color");
-                String hairLength = request.getParameter("hairLength");
-                stmt.executeUpdate("INSERT INTO breeds('title', 'color', 'hair_length') VALUES ('"+name+"','"+color+"','"+hairLength+"')");
+                CatsBean.insertCat(cats.getName(), cats.getColor(), cats.getHairLength());
             } catch (SQLException e) {
                 System.out.println(e);
                 out.print("Error inserting data");
             }
             try {
-                rs = stmt.executeQuery("SELECT * FROM breeds");
+                 rs = CatsBean.getResultSet("SELECT * FROM breeds");
             } catch (SQLException e) {
                 System.out.println(e);
                 out.print("Breed not found");
@@ -60,7 +49,6 @@
     %>
     <table>
         <tr>
-            <td>ID</td>
             <td>Breed</td>
             <td>Color</td>
             <td>Hair Length</td>
@@ -91,8 +79,7 @@
     </table>
     <%
             try {
-                stmt.close();
-                con.close();
+                CatsBean.closeConnection();
                 System.out.println("Database connections closed");
             } catch (SQLException e) {
                 System.out.println("Error closing database");

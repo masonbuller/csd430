@@ -21,7 +21,7 @@
             }
 
             try {
-                String sql = "CREATE TABLE breeds (id INTEGER NOT NULL AUTO_INCREMENT, title VARCHAR(50), color VARCHAR(50), hair_length VARCHAR(20), PRIMARY KEY (id))";
+                String sql = "CREATE TABLE breeds (name VARCHAR(50), color VARCHAR(50), hair_length VARCHAR(20), PRIMARY KEY (name))";
                 stmt.executeUpdate(sql);
                 System.out.println("table created");
             } catch (Exception e) {
@@ -29,8 +29,7 @@
             }
 
             try {
-                String sql = "INSERT INTO breeds (title, color, hair_length) VALUES ('Siamese', 'Cream', 'Short'), ('Russian Blue', 'Blue', 'Short'), " +
-                        "('Bombay', 'Black', 'Short'), ('Persian', 'Mixed', 'Long')";
+                String sql = "INSERT INTO breeds (name, color, hair_length) VALUES ('Siamese', 'Cream', 'Short'), ('Russian Blue', 'Blue', 'Short'), ('Bombay', 'Black', 'Short'), ('Persian', 'Mixed', 'Long')";
                 stmt.executeUpdate(sql);
                 System.out.println("Data insert successful");
             } catch (SQLException e) {
