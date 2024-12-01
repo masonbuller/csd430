@@ -9,6 +9,6 @@
     </div>
   <div class="cart">
     <a class="link2" href="<%=base%>?action=showCart">Show Cart
-      <img src="<%=imageURL%>cart.gif" border="0"/></a>
+      <img src="<%=imageURL%>cart.gif" border="0" alt=""/></a>
     </div>
   </div>

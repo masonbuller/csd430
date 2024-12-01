@@ -3,4 +3,37 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
+        <display-name>eshop</display-name>
+        <servlet-mapping>
+            <servlet-name>ShopServlet</servlet-name>
+            <url-pattern>/ShopServlet/</url-pattern>
+        </servlet-mapping>
+        <servlet>
+            <servlet-name>ShopServlet</servlet-name>
+            <servlet-class>csd430.eshop.ShopServlet</servlet-class>
+            <init-param>
+                <param-name>base</param-name>
+                <param-value>/eshop_war_exploded/shop</param-value>
+            </init-param>
+            <init-param>
+                <param-name>imageURL</param-name>
+                <param-value>/eshop_war_exploded/images/</param-value>
+            </init-param>
+            <init-param>
+                <param-name>jdbcDriver</param-name>
+                <param-value>com.mysql.cj.jdbc.Driver</param-value>
+            </init-param>
+            <init-param>
+                <param-name>dbURL</param-name>
+                <param-value>jdbc:mysql://localhost:3306/shop</param-value>
+            </init-param>
+            <init-param>
+                <param-name>dbUserName</param-name>
+                <param-value>root</param-value>
+            </init-param>
+            <init-param>
+                <param-name>dbPassword</param-name>
+                <param-value>pass</param-value>
+            </init-param>
+        </servlet>
 </web-app>
