@@ -3,11 +3,6 @@
 <%@page import="java.util.Hashtable"%>
 <% String base = (String)application.getAttribute("base");
   String imageURL = (String)application.getAttribute("imageURL"); %>
-<style>
-  .menu {
-    background: "<%=imageURL%>bk_menu.gif" repeat-y top left;
-  }
-</style>
 <jsp:useBean id="dataManager" scope="application"
   class="csd430.eshop.model.DataManager"/>
 <div class="menu"> 
