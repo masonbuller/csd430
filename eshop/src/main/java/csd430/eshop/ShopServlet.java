@@ -10,17 +10,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import csd430.eshop.model.DataManager;
 
-@WebServlet(name = "ShopServlet", urlPatterns = {"/shop/*"})
+//@WebServlet(name = "ShopServlet", urlPatterns = {"/shop/*"})
 public class ShopServlet extends jakarta.servlet.http.HttpServlet
-    implements jakarta.servlet.Servlet {
+        implements jakarta.servlet.Servlet {
   private static final long serialVersionUID = 1L;
 
   public ShopServlet() {
     super();
-    }
+    System.out.println("Testing constructor");
+  }
 
   public void init(ServletConfig config) throws ServletException {
-    System.out.println("*** initializing controller servlet.");
     super.init(config);
 
     DataManager dataManager = new DataManager();
@@ -32,27 +32,28 @@ public class ShopServlet extends jakarta.servlet.http.HttpServlet
     context.setAttribute("base", config.getInitParameter("base"));
     context.setAttribute("imageURL", config.getInitParameter("imageURL"));
     context.setAttribute("dataManager", dataManager);
+    System.out.println("Testing init");
 
     try {  // load the database JDBC driver
       Class.forName(config.getInitParameter("jdbcDriver"));
-      }
+    }
     catch (ClassNotFoundException e) {
       System.out.println(e.toString());
-      }
     }
+  }
 
   protected void doGet(HttpServletRequest request,
-      HttpServletResponse response) throws ServletException, IOException {
+                       HttpServletResponse response) throws ServletException, IOException {
     doPost(request, response);
-    }
+  }
 
   protected void doPost(HttpServletRequest request,
-      HttpServletResponse response) throws ServletException, IOException {
+                        HttpServletResponse response) throws ServletException, IOException {
     String base = "/jsp/";
     String url = base + "index.jsp";
     String action = request.getParameter("action");
     if (action != null) {
-        switch (action) {
+      switch (action) {
         case "search":
           url = base + "SearchOutcome.jsp";
           break;
@@ -72,10 +73,10 @@ public class ShopServlet extends jakarta.servlet.http.HttpServlet
           if (action.matches("(showCart|(add|update|delete)Item)"))
             url = base + "ShoppingCart.jsp";
           break;
-        }
       }
-    RequestDispatcher requestDispatcher =
-      getServletContext().getRequestDispatcher(url);
-    requestDispatcher.forward(request, response);
     }
+    RequestDispatcher requestDispatcher =
+            getServletContext().getRequestDispatcher(url);
+    requestDispatcher.forward(request, response);
   }
+}

@@ -40,7 +40,7 @@ p.info {
 .header { /*********** Top bar ***********/
   width: 900px;
   height: 90px;
-  background: url(/eshop/images/bg_header.gif) no-repeat top left;
+  background: url(images/bg_header.gif) no-repeat top left;
   margin: 0px;
   padding: 0px;
   border-top: 0px;
@@ -80,7 +80,7 @@ p.info {
 .menu { /*********** Left bar ***********/
   width: 180px;
   border: 1px #cccccc solid;
-  background: url(/eshop/images/bg_menu.gif) repeat-y top left;
+  background: url(images/bg_menu.gif) repeat-y top left;
   margin: 0px;
   padding: 20px 0 10px 10px;
   float: left;
@@ -103,7 +103,7 @@ p.info {
   color: #ffffff;
   padding: .2em;
   margin: 0px;
-  background: url(/eshop/images/menubar.gif) repeat-x bottom left;
+  background: url(images/bg_menu.gif) repeat-x bottom left;
   }
 .menu li a {
   font-family: Arial;

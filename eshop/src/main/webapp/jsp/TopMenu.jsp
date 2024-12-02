@@ -3,6 +3,11 @@
   String base = (String)application.getAttribute("base");
   String imageURL = (String)application.getAttribute("imageURL");
   %>
+<style>
+    .header {
+      background: "<%=imageURL%>bg_header.gif"
+    }
+</style>
 <div class="header">
   <div class="logo">
     <p>e-Shopping Center</p>
